@@ -16,6 +16,7 @@ import jakarta.servlet.ServletResponse;
 import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
+import java.util.Arrays;
 
 @Configuration
 public class CORSFilter {
@@ -28,8 +29,9 @@ public class CORSFilter {
 	           registry.addMapping("/**")
 	             .allowedOrigins("*")
 	             .allowedMethods("GET, POST, PATCH, PUT, DELETE, OPTIONS, HEAD")
+	             .allowCredentials(true)
 	             .maxAge(3600)
-	             .allowedHeaders("Requestor-Type")
+	             .allowedHeaders("Authorization", "Requestor-Type")
 	             .exposedHeaders("X-Get-Header");
 	       }
 	   };
